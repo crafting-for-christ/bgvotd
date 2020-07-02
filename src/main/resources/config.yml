@@ -1,0 +1,14 @@
+bgvotdprefix: "&6bgvotd&r "
+#bibleversion: <id>
+#Either the numeric ID from https://www.biblegateway.com/usage/linking/versionslist/
+#Or text ID as seen in BibleGateway.com URLs. For example, if the URL contains "version=NIV", use "NIV" here.
+bibleversion: NIV
+
+#refresh: <hours>
+#Time between automatic refresh. This is in hours. Default is 24.
+refresh: 24
+
+#broadcast: <minutes>
+#How often to broadcast the verse to all players in minutes. Default is 10. To disable broadcasting, set to 0.
+#Disabled by default
+broadcast: 0

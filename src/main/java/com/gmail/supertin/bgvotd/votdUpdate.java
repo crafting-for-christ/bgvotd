@@ -1,26 +1,21 @@
-package com.gmail.supertin.unofficialbiblegatewayvotd;
+package com.gmail.supertin.bgvotd;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.bukkit.Bukkit;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import org.bukkit.Bukkit;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 
 public class votdUpdate {
-
 	public static void main() {
-		
-
-		//Broadcast a message that the VOTD is updating.
 		Bukkit.broadcastMessage("Refreshing Bible Gateway's Verse Of The Day");
-		
-		//Set the URL to use to get the VOTD. Base URL plus the version ID.
-		String sURL = "https://www.biblegateway.com/votd/get/?format=json&version=" + main.bibleversion;
+		String sURL = "https://www.biblegateway.com/votd/get/?format=json&version=" + Variables.bibleversion;
 
 		//OK, now this is where we get the data, mangle it, and set the variable if it all goes well.
 		try {
@@ -34,8 +29,8 @@ public class votdUpdate {
 			JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent())); //Convert the input stream to a json element
 			JsonObject rootobj = root.getAsJsonObject(); //May be an array, may be an object. 
 			JsonObject votd = rootobj.get("votd").getAsJsonObject(); //holder for votd nested json :S
-			main.verse = ReplaceSpecialChars(votd.get("text").getAsString()); //Set the main verse variable.
-			main.reference = votd.get("reference").getAsString(); //Set the verse reference (as in the book, chapter and verse number)
+			bgvotdmain.verse = ReplaceSpecialChars(votd.get("text").getAsString()); //Set the main verse variable.
+			bgvotdmain.reference = votd.get("reference").getAsString(); //Set the verse reference (as in the book, chapter and verse number)
 
 		} catch (IOException e) {
 			//Something bad happened.

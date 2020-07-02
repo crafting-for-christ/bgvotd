@@ -1,0 +1,17 @@
+main: com.gmail.supertin.bgvotd.bgvotdmain
+name: bgvotd
+version: 2.0
+author: SuperTin, Ben Robson
+api-version: 1.13
+
+commands:
+  votd:
+    description: See the Verse of The Day.
+    usage: /votd
+  votdrefresh:
+    description: Manually refresh the Verse of The Day.
+    usage: /votdrefresh
+
+permissions:
+  bgvotd.refresh:
+    default: op
